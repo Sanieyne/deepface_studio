@@ -1,0 +1,24 @@
+# Ignore large neural model weights (download on demand or keep local)
+*.onnx
+*.pth
+*.pt
+*.bin
+*.safetensors
+*.tar.gz
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Flutter & Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+*.lock

@@ -1,0 +1,55 @@
+name: Build DeepFace Studio Windows Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-windows:
+    name: Build DeepFace Studio Windows Bundle
+    runs-on: windows-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Build Flutter Windows Desktop
+        working-directory: ./flutter_app
+        run: |
+          flutter config --enable-windows-desktop
+          flutter pub get
+          flutter build windows --release
+
+      - name: Package Release ZIP
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path dist\DeepFace_Studio
+          Copy-Item -Recurse -Force flutter_app\build\windows\x64\runner\Release\* dist\DeepFace_Studio\
+          Copy-Item -Recurse -Force python_engine dist\DeepFace_Studio\
+          Copy-Item -Recurse -Force models dist\DeepFace_Studio\
+          Copy-Item start_engine.bat dist\DeepFace_Studio\
+          Compress-Archive -Path dist\DeepFace_Studio\* -DestinationPath dist\DeepFace_Studio_Windows_x64.zip -Force
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DeepFace_Studio_Windows_x64
+          path: dist/DeepFace_Studio_Windows_x64.zip

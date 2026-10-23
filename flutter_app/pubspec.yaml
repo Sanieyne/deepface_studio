@@ -1,0 +1,27 @@
+name: deepface_studio
+description: Cosmic-Gen DeepFace Studio - Real-time Webcam Face Swapping & Virtual Camera.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.1
+  flutter_secure_storage: ^11.2.0
+  cupertino_icons: ^1.0.8
+  sqflite_common_ffi: ^2.3.3
+  path_provider: ^2.1.2
+  path: ^1.9.0
+  file_picker: ^12.2.0
+  crypto: ^3.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
