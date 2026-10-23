@@ -1,19 +1,48 @@
 class LiveCamPreset {
+  final String id;
   final String name;
-  final String filename;
-  final String path;
+  final String? filename;
+  final String? path;
+  final String? thumbnailBase64;
 
-  LiveCamPreset({
+  const LiveCamPreset({
+    required this.id,
     required this.name,
-    required this.filename,
-    required this.path,
+    this.filename,
+    this.path,
+    this.thumbnailBase64,
   });
 
   factory LiveCamPreset.fromJson(Map<String, dynamic> json) {
     return LiveCamPreset(
+      id: json['id'] as String? ?? json['name'] as String? ?? 'preset',
       name: json['name'] as String? ?? 'Preset',
-      filename: json['filename'] as String? ?? '',
-      path: json['path'] as String? ?? '',
+      filename: json['filename'] as String?,
+      path: json['path'] as String?,
+      thumbnailBase64: json['thumbnailBase64'] as String?,
+    );
+  }
+}
+
+class LiveCamStatus {
+  final bool active;
+  final String? sourceName;
+  final double fps;
+  final String? streamUrl;
+
+  const LiveCamStatus({
+    this.active = false,
+    this.sourceName,
+    this.fps = 0.0,
+    this.streamUrl,
+  });
+
+  factory LiveCamStatus.fromJson(Map<String, dynamic> json) {
+    return LiveCamStatus(
+      active: json['active'] as bool? ?? false,
+      sourceName: json['sourceName'] as String?,
+      fps: (json['fps'] as num?)?.toDouble() ?? 0.0,
+      streamUrl: json['streamUrl'] as String?,
     );
   }
 }
@@ -25,7 +54,7 @@ class LiveCamStatusResult {
   final String? sourceName;
   final String? streamUrl;
 
-  LiveCamStatusResult({
+  const LiveCamStatusResult({
     required this.success,
     required this.message,
     this.active = false,
@@ -45,6 +74,7 @@ class LiveCamStatusResult {
 }
 
 class LiveCamFrameResult {
+  final bool hasFrame;
   final bool active;
   final double fps;
   final String sourceName;
@@ -53,10 +83,11 @@ class LiveCamFrameResult {
   final String? frameBase64;
   final String? message;
 
-  LiveCamFrameResult({
-    required this.active,
-    required this.fps,
-    required this.sourceName,
+  const LiveCamFrameResult({
+    this.hasFrame = false,
+    this.active = false,
+    this.fps = 0.0,
+    this.sourceName = 'None',
     this.enhanceFace = false,
     this.mirror = true,
     this.frameBase64,
@@ -65,12 +96,13 @@ class LiveCamFrameResult {
 
   factory LiveCamFrameResult.fromJson(Map<String, dynamic> json) {
     return LiveCamFrameResult(
+      hasFrame: json['hasFrame'] as bool? ?? (json['frame_base64'] != null),
       active: json['active'] as bool? ?? false,
       fps: (json['fps'] as num?)?.toDouble() ?? 0.0,
       sourceName: json['source_name'] as String? ?? 'None',
       enhanceFace: json['enhance_face'] as bool? ?? false,
       mirror: json['mirror'] as bool? ?? true,
-      frameBase64: json['frame_base64'] as String?,
+      frameBase64: json['frame_base64'] as String? ?? json['frameBase64'] as String?,
       message: json['message'] as String?,
     );
   }

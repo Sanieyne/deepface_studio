@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
-import '../features/cloud_mode/data/models/saved_generation.dart';
 import 'api_client.dart';
 
 /// High-level authentication state for the app-wide login gate.
