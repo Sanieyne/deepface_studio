@@ -399,7 +399,7 @@ class _SubscriptionPlanDialogState extends State<SubscriptionPlanDialog> {
                                 _buildFeatureRow('Pay-as-you-go Cloud GPU rentals', true, dark, muted),
                                 _buildFeatureRow('Unlimited local generation', false, dark, muted),
                                 _buildFeatureRow('100 monthly compute credits', false, dark, muted),
-                                _buildFeatureRow('Live DeepFace webcam streaming', false, dark, muted),
+                                _buildFeatureRow('High-resolution 4K AI upscaling', false, dark, muted),
                                 const SizedBox(height: 14),
                                 SizedBox(
                                   width: double.infinity,
@@ -422,7 +422,7 @@ class _SubscriptionPlanDialogState extends State<SubscriptionPlanDialog> {
                         ),
                         const SizedBox(width: 16),
 
-                        // Pro Member Card ($4.99)
+                        // Lifetime Software License Card ($35)
                         Expanded(
                           child: Container(
                             padding: const EdgeInsets.all(20),
@@ -447,7 +447,7 @@ class _SubscriptionPlanDialogState extends State<SubscriptionPlanDialog> {
                                 Row(
                                   children: [
                                     const Text(
-                                      'Pro Member',
+                                      'Lifetime License',
                                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                     ),
                                     const Spacer(),
@@ -458,7 +458,7 @@ class _SubscriptionPlanDialogState extends State<SubscriptionPlanDialog> {
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       child: const Text(
-                                        'UNLIMITED • BEST VALUE',
+                                        'ONE-TIME • FULL OWNERSHIP',
                                         style: TextStyle(
                                           fontSize: 9,
                                           fontWeight: FontWeight.w900,
@@ -475,7 +475,7 @@ class _SubscriptionPlanDialogState extends State<SubscriptionPlanDialog> {
                                   textBaseline: TextBaseline.alphabetic,
                                   children: [
                                     const Text(
-                                      '\$4.99',
+                                      '\$35',
                                       style: TextStyle(
                                         fontSize: 24,
                                         fontWeight: FontWeight.w900,
@@ -484,25 +484,25 @@ class _SubscriptionPlanDialogState extends State<SubscriptionPlanDialog> {
                                     ),
                                     const SizedBox(width: 4),
                                     Text(
-                                      '/ month',
+                                      'one-time payment',
                                       style: TextStyle(fontSize: 12, color: muted),
                                     ),
                                   ],
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  'Unlimited local generations + 100 monthly credits',
+                                  'Lifetime software activation • Top up cloud credits anytime',
                                   style: TextStyle(fontSize: 11.5, color: muted),
                                 ),
                                 const SizedBox(height: 14),
                                 const Divider(height: 1),
                                 const SizedBox(height: 14),
+                                _buildFeatureRow('One-time software purchase (\$35 USD)', true, dark, muted, highlight: true),
+                                _buildFeatureRow('No recurring subscriptions or monthly fees', true, dark, muted, highlight: true),
                                 _buildFeatureRow('Unlimited high-speed local generation', true, dark, muted, highlight: true),
-                                _buildFeatureRow('100 monthly Cloud GPU compute credits', true, dark, muted, highlight: true),
-                                _buildFeatureRow('HD Live DeepFace webcam swap stream', true, dark, muted, highlight: true),
-                                _buildFeatureRow('4K Super-Resolution & Real-ESRGAN', true, dark, muted, highlight: true),
-                                _buildFeatureRow('Special PRO Member badge in studio UI', true, dark, muted, highlight: true),
-                                _buildFeatureRow('100% offline data privacy & security', true, dark, muted, highlight: true),
+                                _buildFeatureRow('100% offline data privacy & local GPU power', true, dark, muted, highlight: true),
+                                _buildFeatureRow('Pay-as-you-go optional cloud credits top-up', true, dark, muted, highlight: true),
+                                _buildFeatureRow('Hardware-encrypted activation key', true, dark, muted, highlight: true),
                                 const SizedBox(height: 14),
                                 SizedBox(
                                   width: double.infinity,
@@ -517,7 +517,7 @@ class _SubscriptionPlanDialogState extends State<SubscriptionPlanDialog> {
                                       shadowColor: const Color(0xFF10B981).withValues(alpha: 0.4),
                                     ),
                                     child: Text(
-                                      _isSubscribed ? 'Active (Pro Member)' : 'Subscribe to Pro (\$4.99)',
+                                      _isSubscribed ? 'Active (Software Activated)' : 'Buy License (\$35 USD)',
                                       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                                     ),
                                   ),

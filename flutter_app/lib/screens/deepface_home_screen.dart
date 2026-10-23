@@ -151,7 +151,7 @@ class _DeepFaceHomeScreenState extends State<DeepFaceHomeScreen> {
     if (!isSub) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('🔒 Cosmic-Gen Pro membership (\$4.99/mo) required for live face swapping.'),
+          content: Text('🔒 Lifetime License required (\$35 one-time) for live face swapping.'),
           backgroundColor: LuminaColors.primaryEnd,
           duration: Duration(seconds: 4),
         ),
@@ -362,8 +362,8 @@ class _DeepFaceHomeScreenState extends State<DeepFaceHomeScreen> {
                 ] else ...[
                   ElevatedButton.icon(
                     onPressed: _handleOpenSubscriptionDialog,
-                    icon: const Icon(Icons.star_rounded, size: 15, color: Colors.white),
-                    label: const Text('Get Pro (\$4.99)', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                    icon: const Icon(Icons.key_rounded, size: 15, color: Colors.white),
+                    label: const Text('Buy License (\$35)', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: LuminaColors.primaryEnd,
                       foregroundColor: Colors.white,
